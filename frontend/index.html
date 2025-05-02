@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Karaokê</title>
+</head>
+<body>
+    <img src="../assets/arcade-bar-logo.svg" alt="logo-do-601-arcade-bar">
+
+    <div class="searchContainer">
+        <p>Buscar</p>
+        <input type="text" class="search-bar" placeholder="Pesquise a música ou artista que deseja..">
+    </div>
+
+    <div class="filtros">
+        <button class="filtro-btn all" data-filtro="todos" onclick="buscarMusicas()">Todos</button>
+        <button class="filtro-btn filtro-idiomas-btn">Idiomas</button>
+        <button class="filtro-btn filtro-artistas-btn">Artistas</button>
+    </div>
+
+    <div class="filtros-dinamicos"></div>
+    
+    <div class="musicGroup">
+        <h3>Todos</h3>
+
+        <div class="table">
+
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

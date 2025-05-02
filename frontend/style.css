@@ -1,0 +1,183 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* font-family: "Press Start 2P", system-ui; */
+/* font-family: "Audiowide", sans-serif; */
+
+:root{
+    --bg-color: #0F0416;
+
+    --search-border: #2EA9E3;
+    --search-bar: #1C1B28;
+    --search-text: #8C8C8C;
+
+    --green-border: #D1E76B;
+    --green-btn: #0B332B;
+    --orange-border: #EB6E00;
+    --orange-btn: #250204;
+    --blue-border: #2CE9F4;
+    --blue-btn: #130F2D;
+
+    --table-border: #5801A4;
+    --table-cell: #130F2D;
+}
+
+body{
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.searchContainer{
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-bar{
+    background-color: var(--search-bar);
+    border: 3px solid var(--search-border);
+    border-radius: 5px;
+    color: white;
+    outline: none;
+    padding: 10px;
+    box-shadow: 0 0 8px 0 #29A7E1;
+}
+.search-bar::placeholder{
+    color: var(--search-text);
+}
+
+img{
+    width: 100px;
+}
+
+p{
+    font-family: "Press Start 2P", system-ui;
+    color: white;
+    text-transform: uppercase;
+}
+
+.filtros{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.filtro-btn{
+    font-family: "Audiowide", sans-serif;
+    color: white;
+    padding: 8px 5px;
+    border: 3px solid;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.all{
+    background-color: var(--green-btn);
+    border-color: var(--green-border);
+    box-shadow: 0 0 8px 0 #3AECFC;
+}
+.all:focus{
+    transform: scale(1.05);
+    color: var(--green-border);
+}
+
+.filtro-idiomas-btn{
+    background-color: var(--orange-btn);
+    border-color: var(--orange-border);
+    box-shadow: 0 0 8px 0 #EB6E00;
+}
+.filtro-idiomas-btn:focus{
+    transform: scale(1.05);
+    color: var(--orange-border);
+}
+
+.filtro-artistas-btn{
+    background-color: var(--blue-btn);
+    border-color: var(--blue-border);
+    box-shadow: 0 0 8px 0 #29A7E1;
+}
+.filtro-artistas-btn:focus{
+    transform: scale(1.05);
+    color: var(--blue-border);
+}
+
+.table{
+    margin: 15px 0;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.musicGroup{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 8px;
+}
+
+h3{
+    color: white;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.cell{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding: 12px;
+    gap: 8px;
+}
+
+.codigo, .titulo-cantor, .idioma, .idiomas, .artista{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--table-border);
+    background-color: var(--table-cell);
+    box-shadow: 0 0 8px 0 var(--table-border);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.codigo, .idioma {
+    min-width: 70px;
+}
+
+.artista, .idiomas{
+    width: 90vw;
+    max-width: 1300px;
+    cursor: pointer;
+}
+
+.titulo-cantor{
+    display: block;
+    text-align: start;
+}
+
+.titulo-cantor p{
+    font-family: "Audiowide", sans-serif;
+    font-size: 14px;
+    text-transform: none;
+}
+
+@media (min-width: 768px) {
+    img{
+        width: 200px;
+    }
+}
