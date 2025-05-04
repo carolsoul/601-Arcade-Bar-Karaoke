@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 import musicasRoutes from './routes/musicas.js'
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 // Utilitários para caminho absoluto
 const __filename = fileURLToPath(import.meta.url)
@@ -23,5 +23,5 @@ app.use('/musicas', musicasRoutes)
 app.use(express.static(path.join(__dirname, '../frontend')))
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`)
+  console.log(`Servidor rodando na porta ${PORT}`)
 })
