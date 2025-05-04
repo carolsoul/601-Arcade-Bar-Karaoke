@@ -33,9 +33,24 @@ body{
     padding: 40px 0;
 }
 
+.first-text{
+    font-family: "Audiowide", sans-serif;
+    font-size: 12px;
+    text-transform: none;
+    padding: 20px;
+    background-color: var(--blue-btn);
+    box-shadow: 0 0 8px 0 var(--blue-border);
+    border-radius: 5px;
+    margin: 15px;
+}
+
+span{
+    color: var(--orange-border);
+}
+
 .searchContainer{
     width: 100%;
-    padding: 30px 10px;
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -47,7 +62,7 @@ body{
     border-radius: 5px;
     color: white;
     outline: none;
-    padding: 10px;
+    padding: 15px;
     box-shadow: 0 0 8px 0 #29A7E1;
 }
 .search-bar::placeholder{
@@ -68,15 +83,15 @@ p{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-    padding: 0 20px;
+    gap: 20px;
+    padding: 30px 15px;
 }
 
 .filtro-btn{
     font-family: "Audiowide", sans-serif;
     color: white;
     padding: 8px 5px;
-    border: 3px solid;
+    border: 5px double;
     border-radius: 5px;
     font-size: 15px;
     transition: all 0.3s ease-in-out;
@@ -114,17 +129,18 @@ p{
 }
 
 .table{
-    margin: 15px 0;
+    margin: 15px 0px;
     display: flex;
     gap: 10px;
     flex-direction: column;
+    width: 100%;
 }
 
 .musicGroup{
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    padding: 30px 20px;
+    padding: 30px 5px;
     gap: 8px;
 }
 
@@ -161,7 +177,7 @@ h3{
 
 .artista, .idiomas{
     width: 90vw;
-    max-width: 1300px;
+    max-width: 1380px;
     cursor: pointer;
 }
 
@@ -179,5 +195,16 @@ h3{
 @media (min-width: 768px) {
     img{
         width: 200px;
+    }
+}
+
+@media (width: 768px) {
+    .table{
+        margin: 15px 20px;
+    }
+}
+@media (width: 1024px) {
+    .table{
+        margin: 15px 35px;
     }
 }
