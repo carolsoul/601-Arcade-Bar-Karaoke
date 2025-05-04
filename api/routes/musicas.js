@@ -31,8 +31,24 @@ router.get('/', (req, res) => {
     params.push(`${titulo}%`);
   }
 
+  // Log para debugar a query
+  console.log("SQL Query:", sql);
+  console.log("Params:", params);
+
   db.query(sql, params, (err, results) => {
-    if (err) return res.status(500).send('Erro ao buscar músicas');
+    if (err) {
+      console.error('Erro detalhado ao buscar músicas:', err);
+      return res.status(500).send('Erro ao buscar músicas');
+    }
+
+    // Log dos resultados para ver se os dados estão sendo retornados corretamente
+    console.log("Resultados da consulta:", results);
+
+    if (results.length === 0) {
+      return res.status(404).send('Nenhuma música encontrada');
+    }
+
+    // Retornando os resultados
     res.json(results);
   });
 });

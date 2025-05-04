@@ -1,9 +1,9 @@
-import { createConnection } from 'mysql2';
+import mysql from 'mysql2';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const connection = createConnection({
+const db = mysql.createConnection({
   host: process.env.MYSQLHOST,
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
@@ -11,12 +11,23 @@ const connection = createConnection({
   port: process.env.MYSQLPORT || 3306,
 });
 
-connection.connect((err) => {
+// Conecta ao banco
+db.connect(err => {
   if (err) {
     console.error('Erro ao conectar ao banco de dados:', err);
-    return;
+  } else {
+    console.log('Conectado ao MySQL!');
   }
-  console.log('Conectado ao MySQL!');
 });
 
-export default connection;
+// Testa a conexão
+db.query('SELECT 1 + 1 AS resultado', (err, rows) => {
+  if (err) {
+    console.error('Erro na query de teste:', err);
+  } else {
+    console.log('Query de teste bem-sucedida:', rows);
+  }
+});
+
+
+export default db;
