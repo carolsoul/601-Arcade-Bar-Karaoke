@@ -4,6 +4,9 @@ const filtroArtistasBtn = document.querySelector('.filtro-artistas-btn');
 const filtroIdiomasBtn = document.querySelector('.filtro-idiomas-btn');
 const containerDinamico = document.querySelector('.filtros-dinamicos');
 
+// URL da API no Render
+const API_URL = 'https://six01-arcade-bar-karaoke.onrender.com/musicas';
+
 // Função para renderizar as músicas na interface
 function renderMusicas(musicas) {
     musicContainer.innerHTML = '';
@@ -30,7 +33,7 @@ function renderMusicas(musicas) {
 
 // Função para buscar músicas da API com filtros
 async function buscarMusicas(filtros = {}) {
-    let url = 'http://localhost:3000/musicas';
+    let url = `${API_URL}`;
     const params = new URLSearchParams();
 
     if (filtros.termo) params.append('termo', filtros.termo);
@@ -40,10 +43,11 @@ async function buscarMusicas(filtros = {}) {
 
     if ([...params].length) url += `?${params.toString()}`;
 
-    console.log('Buscando músicas com URL:', url); // Para ver se está gerando corretamente
+    console.log('Buscando músicas com URL:', url);
 
     try {
         const res = await fetch(url);
+        if (!res.ok) throw new Error(`Erro na API: ${res.status} ${res.statusText}`);
         const musicas = await res.json();
         renderMusicas(musicas);
     } catch (err) {
@@ -59,11 +63,11 @@ searchInput.addEventListener('input', async () => {
 
 // Renderização de artistas para torná-los clicáveis
 function renderArtistas(artistas) {
-    musicContainer.innerHTML = ''; // Limpa as músicas que estavam na tela
+    musicContainer.innerHTML = '';
 
     artistas.forEach(nome => {
         const cell = document.createElement('div');
-        cell.classList.add('cell', 'artista-cell'); // Adiciona classe para estilização
+        cell.classList.add('cell', 'artista-cell');
 
         cell.innerHTML = `
             <div class="artista">
@@ -71,7 +75,6 @@ function renderArtistas(artistas) {
             </div>
         `;
 
-        // Torna os artistas clicáveis para buscar as músicas correspondentes
         cell.addEventListener('click', () => buscarMusicas({ artista: nome.trim() }));
 
         musicContainer.appendChild(cell);
@@ -81,19 +84,18 @@ function renderArtistas(artistas) {
 // Evento de clique no botão de artistas
 filtroArtistasBtn.addEventListener('click', async () => {
     try {
-        const res = await fetch('http://localhost:3000/musicas/artistas');
+        const res = await fetch(`${API_URL}/artistas`);
+        if (!res.ok) throw new Error(`Erro na API: ${res.status} ${res.statusText}`);
         const artistas = await res.json();
-
-        renderArtistas(artistas); // Exibe os artistas e torna-os interativos
-
+        renderArtistas(artistas);
     } catch (err) {
         console.error('Erro ao carregar artistas:', err);
     }
 });
 
-// Função de renderização para exibir os idiomas ao invés das músicas
+// Função de renderização para exibir os idiomas
 function renderIdiomas(idiomas) {
-    musicContainer.innerHTML = ''; // Limpa as músicas que estavam na tela
+    musicContainer.innerHTML = '';
 
     idiomas.forEach(lang => {
         const cell = document.createElement('div');
@@ -114,11 +116,10 @@ function renderIdiomas(idiomas) {
 // Listar idiomas ao clicar no botão
 filtroIdiomasBtn.addEventListener('click', async () => {
     try {
-        const res = await fetch('http://localhost:3000/musicas/idiomas');
+        const res = await fetch(`${API_URL}/idiomas`);
+        if (!res.ok) throw new Error(`Erro na API: ${res.status} ${res.statusText}`);
         const idiomas = await res.json();
-
-        renderIdiomas(idiomas); // Exibe os idiomas e torna interativos
-
+        renderIdiomas(idiomas);
     } catch (err) {
         console.error('Erro ao carregar idiomas:', err);
     }
